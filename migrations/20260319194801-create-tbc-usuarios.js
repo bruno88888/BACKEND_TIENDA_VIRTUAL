@@ -10,13 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nombre: {
-        type: Sequelize(100),
+        type: Sequelize.STRING(100),
         allowNull:false
       },
       direccion: {
         type: Sequelize.STRING(200),
         allowNull:false
-
       },
       telefono: {
         type: Sequelize.STRING(15),
@@ -31,12 +30,13 @@ module.exports = {
         allowNull:false
       },
       rol: {
-        type: Sequelize.STRING.ENUM('admin', 'cliente'),
-        allowNull:false, 
-        defaultValue: 'cliente'
+        type: Sequelize.ENUM('admin', 'cliente'),
+      allowNull:false,
+      defaultValue: 'cliente'
       },
       fecha_registro: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE,
+        allowNull:false
       },
       createdAt: {
         allowNull: false,
