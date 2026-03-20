@@ -25,6 +25,16 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
+      id_categorias: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'tbc_categorias',
+          key: 'id'
+        },
+        onUpdate: 'NO ACTION',
+        onDelete: 'NO ACTION'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
