@@ -9,9 +9,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get('/', (req, rest)=> rest.status(200).send({
+app.get('/', (req, res)=> res.status(200).send({
     message: 'Hola Crack bienvenido a mi API de Tienda Virtual',
 }));
+
+require('./routes/route.categoria')(app);
 
 const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);

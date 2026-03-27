@@ -23,7 +23,7 @@ tbc_categorias.associate = function(models) {
   // associations can be defined here
   tbc_categorias.hasMany(models.tbb_productos,  
     {
-      foreignKey: 'categoria_id',
+      foreignKey: 'id_categorias',
       as: 'tbb_productos'
     }
   );

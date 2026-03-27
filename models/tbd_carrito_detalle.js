@@ -21,5 +21,17 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'tbd_carrito_detalle',
   });
+
+  tbd_carrito_detalle.associate = function(models) {
+    tbd_carrito_detalle.belongsTo(models.tbb_carritos, {
+      foreignKey: 'carrito_id',
+      as: 'carrito'
+    });
+    tbd_carrito_detalle.belongsTo(models.tbb_productos, {
+      foreignKey: 'producto_id',
+      as: 'producto'
+    });
+  };
+
   return tbd_carrito_detalle;
 };
