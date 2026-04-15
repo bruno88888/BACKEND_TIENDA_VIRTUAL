@@ -4,24 +4,8 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class tbb_productos extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      tbb_productos.belongsTo(models.tbc_categorias,
-        {
-          foreignKey: 'id_categorias',
-          as: 'categoria'
-        }
-      );
-      tbb_productos.hasMany(models.tbd_carrito_detalle,
-        {
-          foreignKey: 'producto_id',
-          as: 'detalles'
-        }
-      );
+      // define association here
     }
   }
   tbb_productos.init({
@@ -40,10 +24,29 @@ module.exports = (sequelize, DataTypes) => {
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    id_categoria: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     sequelize,
     modelName: 'tbb_productos',
   });
+
+  tbb_productos.associate = function(models) {
+    tbb_productos.belongsTo(models.tbc_categorias,
+    {
+      as: 'tbc_categorias',
+      foreignKey: 'id_categoria',
+    }
+  );
+
+    tbb_productos.hasMany(models.tbd_carrito_detalle, {
+      as: 'detalles_carrito',
+      foreignKey: 'id_producto',
+    });
+
+  };
   return tbb_productos;
 };

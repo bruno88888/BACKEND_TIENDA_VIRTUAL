@@ -10,10 +10,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', (req, res)=> res.status(200).send({
-    message: 'Hola Crack bienvenido a mi API de Tienda Virtual',
+    message: 'Bienvenido a mi api de tienda virtual',
 }));
 
-require('./routes/route.categoria')(app);
+require('./routes/route_categorias')(app);
+require('./routes/route_usuarios')(app);
+require('./routes/route_productos')(app);
+require('./routes/route_carritos')(app);
+require('./routes/route_carrito_detalle')(app);
 
 const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);

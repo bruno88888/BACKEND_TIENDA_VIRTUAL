@@ -17,6 +17,26 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
+      id_carrito: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'tbb_carritos',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      id_producto: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'tbb_productos',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
