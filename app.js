@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
@@ -15,6 +16,7 @@ app.get('/', (req, res)=> res.status(200).send({
 
 require('./routes/route_categorias')(app);
 require('./routes/route_usuarios')(app);
+require('./routes/route_login')(app);
 require('./routes/route_productos')(app);
 require('./routes/route_carritos')(app);
 require('./routes/route_carrito_detalle')(app);
